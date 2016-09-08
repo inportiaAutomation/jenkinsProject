@@ -1,0 +1,28 @@
+package com.inportia.batch03Framework.utils;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+public class Helper {
+     
+	
+	   public WebElement explicit_wait(WebDriver driver,By locator,long time)
+	   {
+		   WebElement element = (new WebDriverWait(driver,time)).until(new
+		     ExpectedCondition<WebElement>(){
+
+		          @Override
+		          public WebElement apply(WebDriver d)
+		          {
+		             return d.findElement(By.name("name-of-element"));
+		          }
+		     }
+		   );
+		   
+		   return element;
+
+	   }
+}
