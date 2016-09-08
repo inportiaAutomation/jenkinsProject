@@ -24,17 +24,18 @@ public class BrowserManager {
 	
 	static WebDriver createBrowser(String browser_name) throws MalformedURLException
 	{
-		switch(browser_name)
+				if (browser_name.equalsIgnoreCase("Firefox"))
 		{
-		case "Firefox":
+		
 			System.setProperty("webdriver.gecko.driver", "C:/workspace/driver/geckodriver-v0.9.0-win64/geckodriver.exe");
 			System.setProperty("webdriver.firefox.bin", "C:/workspace/driver/FirefoxPortable/FirefoxPortable.exe");
 			browser = new FirefoxDriver(new FirefoxProfile());
 			browser.manage().deleteAllCookies();
 			browser.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 			browser.manage().window().maximize();
-			break;
-		case "RemoteGrid":
+			return browser;
+		}
+		else if(browser_name.equalsIgnoreCase("RemoteGrid")){
 			System.setProperty("webdriver.gecko.driver", "C:/workspace/driver/geckodriver-v0.9.0-win64/geckodriver.exe");
 			System.out.println("Connecting to the grid.");
 			DesiredCapabilities dcap = DesiredCapabilities.firefox();
@@ -42,16 +43,20 @@ public class BrowserManager {
 			dcap.setPlatform(Platform.WIN8_1);
 //			FirefoxProfile profile = new FirefoxProfile();
 			browser = new RemoteWebDriver(new URL(node_url),dcap);
-			break;
-		default:
+			return browser;
+		}
+		else{
 			System.out.println("Running the default browser i.e. Firefox.");
 			browser = new FirefoxDriver(new FirefoxProfile());
 			browser.manage().deleteAllCookies();
 			browser.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 			browser.manage().window().maximize();
-			break;
+			return browser;
+			
 		}
-		return browser;
+		
+
+		
 	}
 	
 	public static void destroyBrowser()
