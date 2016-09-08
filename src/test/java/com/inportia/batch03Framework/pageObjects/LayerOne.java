@@ -25,21 +25,19 @@ public class LayerOne extends BasePage {
 	
 	  public void select_radio_button(String option)
 	  {
-		 switch(option)
-		 {
-		    case "BMW":
+		if (option.equalsIgnoreCase("HONDA")){
 		    	 driver.findElement(radiobox_benz).click();
-		    	 break;
-		    case "BENZ":
+			 }
+		    	 else if (option.equalsIgnoreCase("HONDA")){
 		    	 driver.findElement(radiobox_benz).click();
-		    	 break;
-		    case "HONDA":
+		    	 }
+		    	 else if (option.equalsIgnoreCase("HONDA")){
 		    	 driver.findElement(radiobox_benz).click();
-		    	 break;
-		    default:
+		    	 }
+		    	 else{
 		         driver.findElement(radiobox_benz).click();
-			 	 break;
-		 }
+		    	 }
+		 
 	  }
 	  
 	  public void close_browser()
