@@ -19,49 +19,49 @@ public class ClickCheckboxPage extends BasePage {
 	    public  WebElement get_checkbox(String option)
 	    {
 	    	
+	    
 	    	WebElement checkbox = null;
-	    	switch(option)
-	    	{
-	    	case "BMW":
+	    	if(option.equalsIgnoreCase("BMW")){
 	    		checkbox = driver.findElement(bmw_chk);
-	    		break;
-	    	case "HONDA":
-	    		checkbox = driver.findElement(honda_chk);
-	    		break;
-	    	case "BENZ":
-	    		checkbox = driver.findElement(benz_chk);
-	    		break;
-	    	default:
-	    		checkbox = driver.findElement(benz_chk) ;
-	    		return checkbox;
+	    		
 	    	}
-	    	
+	    	else if (option.equalsIgnoreCase("HONDA")){
+	    		checkbox = driver.findElement(honda_chk);
+	    		
+	    	}
+	    	else if (option.equalsIgnoreCase("BENZ")){ 
+	    		checkbox = driver.findElement(benz_chk);
+	    	}
+	    	else{
+	    		checkbox = driver.findElement(benz_chk) ;
+	    		
+	    	}
 	    	return checkbox;
+	    	
+	    
 	    }
 	
 	    public void select_inclusive_checkbox(String option)
 	    {
 	    	WebElement checkbox;
 	    	
-	    	switch(option)
-	    	{
-	    	case "BMW":
+	    	
+	    		if(option.equalsIgnoreCase("BMW")){
 	    		checkbox = driver.findElement(bmw_chk);
 	    		if(!checkbox.isSelected())
 	    		  checkbox.click();
-	    		break;
-	    	case "HONDA":
+	    		}
+	    		else if (option.equalsIgnoreCase("HONDA")){
 	    		checkbox = driver.findElement(honda_chk);
 	    		if(!checkbox.isSelected())
 		    		  checkbox.click();
-	    		break;
-	    	case "BENZ":
+	    		}
+	    		else if (option.equalsIgnoreCase("BENZ")){
 	    		checkbox = driver.findElement(benz_chk);
 	    		if(!checkbox.isSelected())
 		    		  checkbox.click();
-	    		break;
-	    			
-	    	}
+	    		}
+	    
 	    }
 	    
 	    
