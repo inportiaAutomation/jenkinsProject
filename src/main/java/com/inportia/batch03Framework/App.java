@@ -6,8 +6,9 @@ import cucumber.api.CucumberOptions;
 import cucumber.api.junit.Cucumber;
 
 @RunWith(Cucumber.class)
-@CucumberOptions 
+@CucumberOptions ,
 (
+		format   = {"pretty", "html:target/cucumber", "json:target/cucumber.json"},
 		features = "Feature",
 		glue = "com/inportia/batch03Framework/stepDefs",
 		tags = "@chk"
